@@ -58,6 +58,10 @@ USER app
 
 # reenter the docker container, but this time with app user( since we set permissions )
 docker run -it react-app sh
+
+# after we set CMD or ENTRYPOINT instruction in Dockerfile, we can run image directly
+directly: docker run react-app
+with arguments: docker run react-app npm start
 ```
 
 ## Links
