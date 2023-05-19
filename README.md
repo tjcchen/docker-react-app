@@ -1,2 +1,5 @@
-# docker-react-app
-a docker react app
+## Docker React App
+A front-end application bootstrapped with Docker.
+
+## License
+MIT
