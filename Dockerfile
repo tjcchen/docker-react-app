@@ -15,3 +15,9 @@ ENV API_URL=https://api.myapp.com/
 
 # expose a 3000 application port( just for documentation purpose )
 EXPOSE 3000
+
+# add an app group, and add an app user
+RUN addgroup app && adduser -S -G app app
+
+# use the app user
+USER app

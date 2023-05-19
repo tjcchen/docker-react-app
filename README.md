@@ -7,7 +7,7 @@ A front-end application bootstrapped with Docker.
 FROM       # base image
 WORKDIR    # working directory
 COPY       # copy files and directories
-ADD        # add files and directories
+ADD        # add files and directories( url and zip file support )
 RUN        # execute operating system commands( eg: linux commands )
 ENV        # setting environment variables
 EXPOSE     # starting on a given port
@@ -30,10 +30,38 @@ Dockerfile: ENV API_URL=https://api.myapp.com/
 Linux env: printenv API_URL
 Linux env: echo $API_URL
 
+# docker users
+
+# run a alpine linux environment
+docker run -it alpine
+
+# add an app group
+addgroup app
+
+# check groups
+cat /etc/groups
+
+# add an app user with app name
+adduser -S -G app app
+
+# check user group
+groups app
+
+# create a tjcchen group, and add a tjcchen user
+addgroup tjcchen && adduser -S -G tjcchen tjcchen
+
+# add a app user in Dockerfile
+RUN addgroup app && adduser -S -G app app
+
+# use the app user
+USER app
+
+# reenter the docker container, but this time with app user( since we set permissions )
+docker run -it react-app sh
 ```
 
 ## Links
-Base Image Sample: https://docs.docker.com/samples/
+Base Image Samples: https://docs.docker.com/samples/
 
 Find Images: https://hub.docker.com/
 
