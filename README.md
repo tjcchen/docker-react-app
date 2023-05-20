@@ -62,6 +62,9 @@ docker run -it react-app sh
 # after we set CMD or ENTRYPOINT instruction in Dockerfile, we can run image directly
 directly: docker run react-app
 with arguments: docker run react-app npm start
+
+# check layer's information( check information from bottom to top )
+docker history react-app
 ```
 
 ## Links
