@@ -11,10 +11,17 @@ USER app
 WORKDIR /app
 
 # copy directories( use add if you want to apply url or a zip file, the docker will unzip it )
-COPY . .
+# COPY . .
 
 # install npm dependencies, after we ignore node_modules in .dockerignore
+# RUN npm install
+
+# OPTIMIZE
+COPY package*.json .
+
 RUN npm install
+
+COPY . .
 
 # set environment variables( eg: a frontend server needs to call backend services )
 ENV API_URL=https://api.myapp.com/

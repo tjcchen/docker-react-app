@@ -63,8 +63,20 @@ docker run -it react-app sh
 directly: docker run react-app
 with arguments: docker run react-app npm start
 
+# [important] optimize your docker build speed
+
 # check layer's information( check information from bottom to top )
 docker history react-app
+
+# do modifications to your Dockerfile(optimize build layers)
+# copy package.json file & install dependencies first, then we copy files
+COPY . .
+RUN npm install
+=>
+COPY package*.json .
+RUN npm install
+COPY . .
+
 ```
 
 ## Links
