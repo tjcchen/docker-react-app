@@ -70,6 +70,7 @@ docker history react-app
 
 # do modifications to your Dockerfile(optimize build layers)
 # copy package.json file & install dependencies first, then we copy files
+# [key] In Dockerfile, we need to put less changed files in the top( stable instructions ), and frequently changed files to the bottom( changing instructions )
 COPY . .
 RUN npm install
 =>
