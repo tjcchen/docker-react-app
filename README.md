@@ -116,6 +116,29 @@ docker build -t react-app:2 .
 docker image tag <imageid> react-app:latest
 docker image tag 3d8db67b7e6e react-app:latest
 
+# sharing images
+
+# step0: login to your docker hub via terminal
+docker login
+
+# step1: create an image in your docker hub, usually with the same local name
+
+# step2: rename your local image to a remote image
+docker image tag react-app:2 tjcchen/react-app:2
+
+# step3: push to docker hub
+docker push tjcchen/react-app:2
+
+# step4: modify some code & rename again
+docker build -t react-app:3 .
+docker image tag react-app:3 tjcchen/react-app:3 ( after some modification )
+
+# step5: push new version to docker hub
+docker push tjcchen/react-app:3
+
+# step6: we can pull docker image from any machine
+docker pull tjcchen/react-app:3
+
 ```
 
 ## Links
