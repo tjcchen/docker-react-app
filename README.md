@@ -68,7 +68,7 @@ with arguments: docker run react-app npm start
 # check layer's information( check information from bottom to top )
 docker history react-app
 
-# do modifications to your Dockerfile(optimize build layers)
+# do modifications to your Dockerfile( optimize build layers )
 # copy package.json file & install dependencies first, then we copy files
 # [key] In Dockerfile, we need to put less changed files in the top( stable instructions ), and frequently changed files to the bottom( changing instructions )
 COPY . .
@@ -78,6 +78,23 @@ COPY package*.json .
 RUN npm install
 COPY . .
 
+# remove images & containers
+
+# remove dangling images( to remove dangling images, be sure to remove stopped containers first )
+docker image prune
+
+# remove all exited containers
+docker ps -a
+docker container prune
+
+# remove docker image
+docker image rm <imagename> or docker image rm <imageid>
+docker image rm react-app
+docker image rm 8b9
+
+# remove stopped docker container
+docker rm <containerid>
+docker rm 8b9
 ```
 
 ## Links
