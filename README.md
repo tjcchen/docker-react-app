@@ -95,6 +95,27 @@ docker image rm 8b9
 # remove stopped docker container
 docker rm <containerid>
 docker rm 8b9
+
+# tagging images
+
+# [IMPORTANT] BE SURE TO ALWAYS TAG YOUR IMAGES IN PRODUCTION ENVIRONMENT( Explicit Tags )
+
+# build image along with tag( current version 1, if we don't specify, docker will give it a `latest` tag )
+docker build -t react-app:1 .
+
+# remove image by tag
+docker image remove react-app:1
+
+# rename a tag after build
+docker image tag react-app:latest react-app:1
+
+# rebuild a new image after modifying code
+docker build -t react-app:2 .
+
+# rename version 2 to latest( we need to explicitly tag the latest version )
+docker image tag <imageid> react-app:latest
+docker image tag 3d8db67b7e6e react-app:latest
+
 ```
 
 ## Links
