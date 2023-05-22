@@ -191,6 +191,24 @@ docker cp secret.txt <containerid>:/app  # from host to to container
 # sharing source code with containers( use a absolute path )
 # eg: config files or text files
 docker run -v $(pwd):/app <image>
+```
+
+```bash
+# run a container in detach mode( in background )
+docker run -d react-app
+
+# give the running docker a name
+docker run -d --name blue-sky react-app
+
+# check container logs
+docker logs <containerid>
+docker logs 516294f41dc9
+
+# check more logs arguments
+docker logs --help
+
+# check last 5 lines of logs with timestamp
+docker logs -n 5 -t 516294f41dc9
 
 ```
 
