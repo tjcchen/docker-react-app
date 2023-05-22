@@ -229,6 +229,34 @@ docker rm <containerid>
 docker rm -f <containerid> # to force the removal
 docker container prune     # to remove stopped containers
 
+# each container has its own file system, we can not access one container's data from another container
+docker exec -it <containerid> sh
+docker exec -it containerid1 sh
+docker exec -it containerid2 sh
+
+# persisting data using volumes
+
+# docker volume commands
+docker volume --help
+
+# list all volumes
+docker volume ls
+
+# create a volume
+docker volume create app-data
+
+# remove volume data
+docker volume rm app-data
+
+# inspect volume data( MountPoint: on mac linux virtual machine, not on your mac )
+docker volume inspect app-data
+
+# using app-data volume( -v argument will create volume on host and /app/data directory on container )
+docker run -d -p 4000:3000 -v app-data:/app/data react-app
+
+# add new files to container's /app/data folder( after we fix the permission issue, then data written to /app/data folder will be persist even we delete the container )
+docker exec -it f1047d966528 sh
+
 ```
 
 ## Links

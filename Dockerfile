@@ -10,6 +10,9 @@ USER app
 # set target folder to app, thus we no longer need to rewrite /app folder in COPY instruction
 WORKDIR /app
 
+# create a data folder with app user, then we can write data to container's /app/data directory
+RUN mkdir data
+
 # copy directories( use add if you want to apply url or a zip file, the docker will unzip it )
 # COPY . .
 
