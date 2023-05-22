@@ -96,12 +96,6 @@ docker image rm 8b9
 docker rm <containerid>
 docker rm 8b9
 
-# remove containers
-docker container rm <containerid>
-docker rm <containerid>
-docker rm -f <containerid> # to force the removal
-docker container prune     # to remove stopped containers
-
 # tagging images
 
 # [IMPORTANT] BE SURE TO ALWAYS TAG YOUR IMAGES IN PRODUCTION ENVIRONMENT( Explicit Tags )
@@ -221,6 +215,20 @@ docker exec c1 ls
 
 # execute command in a running container in an interactive way
 docker exec -it c1 sh
+
+# stop a container( can use both name or containerid )
+docker stop c1
+
+# start a container( start a stopped container )
+docker start <containerid>
+docker start 516294f41dc9
+
+# remove containers
+docker container rm <containerid>
+docker rm <containerid>
+docker rm -f <containerid> # to force the removal
+docker container prune     # to remove stopped containers
+
 ```
 
 ## Links
