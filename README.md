@@ -269,6 +269,14 @@ echo hello > secret.txt ( create a secret.txt file locally )
 docker cp secret.txt 831d13338e05:/app ( copy file from host to container )
 docker exec -it 831d13338e05 sh ( check secret.txt file in container )
 
+# sharing the source code with a Container
+
+# mapping host source code on port 5001 to container port 3000( this is a cool command in development stage )
+docker run -d -p 5001:3000 -v $(pwd):/app react-app
+
+# checking logs after changing source code( we can see the hot reloading logs )
+docker log -f 1ff
+
 ```
 
 ## Links
