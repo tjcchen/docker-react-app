@@ -32,7 +32,7 @@ ENV API_URL=https://api.myapp.com/
 # expose a 3000 application port( just for documentation purpose )
 EXPOSE 3000
 
-# run an bootstrap command, we can only one CMD in a Dockerfile
+# run a bootstrap command, we can only add one CMD in a Dockerfile
 # differences between RUN and CMD
 # RUN: RUN is a `build time instruction`, and is executed when building the image. The result dependencies is stored in images
 # CMD: In contrast, CMD is a `run time instruction`, it is executed when starting a container
