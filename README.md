@@ -96,6 +96,12 @@ docker image rm 8b9
 docker rm <containerid>
 docker rm 8b9
 
+# remove containers
+docker container rm <containerid>
+docker rm <containerid>
+docker rm -f <containerid> # to force the removal
+docker container prune     # to remove stopped containers
+
 # tagging images
 
 # [IMPORTANT] BE SURE TO ALWAYS TAG YOUR IMAGES IN PRODUCTION ENVIRONMENT( Explicit Tags )
@@ -156,6 +162,35 @@ docker image load -i react-app.tar
 # starting and stopping containers
 docker stop <containerid>
 docker start <containerid>
+
+# [deployment] mapping host port to container port( in this case, we map host port 80 to container 3000 )
+docker run -it -p 80:3000 react-app:4
+
+# volumes
+# volume command is used to mount folders data between host and container
+
+# print current folder file content to terminal
+find . -type f -exec cat {} \;
+
+# list all volumes
+docker volume ls
+
+# create an volume
+docker volume create app-data
+
+# inspect the volume data
+docker volume inspect app-data
+
+# mount volumes
+docker run -v app-data:/app/data <image>
+
+# Copying files between the host and containers
+docker cp <containerid>:app/log.txt .    # from container to host
+docker cp secret.txt <containerid>:/app  # from host to to container
+
+# sharing source code with containers( use a absolute path )
+# eg: config files or text files
+docker run -v $(pwd):/app <image>
 
 ```
 
