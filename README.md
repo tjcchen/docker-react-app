@@ -100,13 +100,13 @@ docker rm 8b9
 
 # [IMPORTANT] BE SURE TO ALWAYS TAG YOUR IMAGES IN PRODUCTION ENVIRONMENT( Explicit Tags )
 
-# build image along with tag( current version 1, if we don't specify, docker will give it a `latest` tag )
+# option1: build image along with tag( current version 1, if we don't specify, docker will give it a `latest` tag )
 docker build -t react-app:1 .
 
 # remove image by tag
 docker image remove react-app:1
 
-# rename a tag after build
+# option2: rename a tag after build
 docker image tag react-app:latest react-app:1
 
 # rebuild a new image after modifying code
@@ -138,6 +138,24 @@ docker push tjcchen/react-app:3
 
 # step6: we can pull docker image from any machine
 docker pull tjcchen/react-app:3
+
+# saving and loading images( transfer images without Docker Hub )
+
+# check saving commands
+docker image save --help
+
+# save react-app image as a .tar file( then we got a .tar file in current directory, this .tar file contains layered information )
+docker image save -o react-app.tar react-app:3
+
+# image load commands
+docker image load --help
+
+# delete local images & use untar image( then we got react-app:3 image locally )
+docker image load -i react-app.tar
+
+# starting and stopping containers
+docker stop <containerid>
+docker start <containerid>
 
 ```
 
