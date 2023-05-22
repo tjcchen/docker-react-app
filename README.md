@@ -257,6 +257,18 @@ docker run -d -p 4000:3000 -v app-data:/app/data react-app
 # add new files to container's /app/data folder( after we fix the permission issue, then data written to /app/data folder will be persist even we delete the container )
 docker exec -it f1047d966528 sh
 
+# copying files between the Host and containers
+
+# from container to current host
+docker exec -it 831d13338e05 sh ( enter into a container )
+echo hello > log.txt ( create a log.txt file under app dir )
+docker cp 831d13338e05:/app/log.txt . ( copy file from container to host )
+
+# from host to container
+echo hello > secret.txt ( create a secret.txt file locally )
+docker cp secret.txt 831d13338e05:/app ( copy file from host to container )
+docker exec -it 831d13338e05 sh ( check secret.txt file in container )
+
 ```
 
 ## Links
