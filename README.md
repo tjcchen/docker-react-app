@@ -213,8 +213,14 @@ docker logs -n 5 -t 516294f41dc9
 # publishing port
 
 # mapping host 80 port to container 3000 port
+docker run -d -p 80:3000 --name c1 react-app
 
+# execute command in a running container
+docker exec <containername> <command>
+docker exec c1 ls
 
+# execute command in a running container in an interactive way
+docker exec -it c1 sh
 ```
 
 ## Links
