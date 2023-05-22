@@ -210,6 +210,11 @@ docker logs --help
 # check last 5 lines of logs with timestamp
 docker logs -n 5 -t 516294f41dc9
 
+# publishing port
+
+# mapping host 80 port to container 3000 port
+
+
 ```
 
 ## Links
