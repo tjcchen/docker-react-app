@@ -13,9 +13,11 @@ ENV        # setting environment variables
 EXPOSE     # starting on a given port
 USER       # user that runs this application
 CMD        # commands
-ENTRYPOINT # entrypoint dir & file
+ENTRYPOINT # entrypoint
 
 # build an image on top of "node:14.21.3-alpine"
+FROM node:14.21.3-alpine
+
 docker build -t react-app .
 docker images | grep -i react-app
 
@@ -32,7 +34,7 @@ Linux env: echo $API_URL
 
 # docker users
 
-# run a alpine linux environment
+# run an alpine linux environment
 docker run -it alpine
 
 # add an app group
@@ -56,16 +58,16 @@ RUN addgroup app && adduser -S -G app app
 # use the app user
 USER app
 
-# reenter the docker container, but this time with app user( since we set permissions )
+# reenter the docker container, but this time with app user( since we set permissions in Dockerfile )
 docker run -it react-app sh
 
 # after we set CMD or ENTRYPOINT instruction in Dockerfile, we can run image directly
 directly: docker run react-app
-with arguments: docker run react-app npm start
+with arguments( without CMD or ENTRYPOINT ): docker run react-app npm start
 
 # [important] optimize your docker build speed
 
-# check layer's information( check information from bottom to top )
+# check layer's information( check from bottom to top )
 docker history react-app
 
 # do modifications to your Dockerfile( optimize build layers )
@@ -136,7 +138,7 @@ docker image tag react-app:3 tjcchen/react-app:3 ( after some modification )
 # step5: push new version to docker hub
 docker push tjcchen/react-app:3
 
-# step6: we can pull docker image from any machine
+# step6: we can pull docker image from any machines
 docker pull tjcchen/react-app:3
 
 # saving and loading images( transfer images without Docker Hub )
@@ -276,7 +278,6 @@ docker run -d -p 5001:3000 -v $(pwd):/app react-app
 
 # checking logs after changing source code( we can see the hot reloading logs )
 docker log -f 1ff
-
 ```
 
 ## Links
