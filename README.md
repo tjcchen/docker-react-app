@@ -278,6 +278,26 @@ docker run -d -p 5001:3000 -v $(pwd):/app react-app
 
 # checking logs after changing source code( we can see the hot reloading logs )
 docker log -f 1ff
+
+#####################################################
+# clean all containers and images( useful technique )
+#####################################################
+
+# option1: Docker dashboard -> Toubleshooting( top bar ) -> Clean / Purge data
+
+# option2: With Command Line
+
+# step1: get all image ids
+docker image ls -q
+
+# step2: pass the result from step1 as an argument to step2( be sure to remove all containers first )
+docker image rm $(docker image ls -q)
+
+# step 3: list all container ids
+docker container ls -a -q
+
+# step 4: pass the result from step3 as an argument to step4
+docker container rm -f $(docker container ls -a -q)
 ```
 
 ## Links
