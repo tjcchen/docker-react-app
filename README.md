@@ -291,7 +291,7 @@ docker log -f 1ff
 docker image ls -q
 
 # step2: pass the result from step1 as an argument to step2( be sure to remove all containers first )
-docker image rm $(docker image ls -q)
+docker image rm -f $(docker image ls -q)
 
 # step 3: list all container ids
 docker container ls -a -q
