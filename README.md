@@ -1,6 +1,9 @@
 ## Docker React App
 A front-end application bootstrapped with Docker.
 
+## Website
+Website is live at: http://35.172.190.158/
+
 ## Dockerfile
 ```bash
 # Dockerfile instructions
@@ -298,6 +301,9 @@ docker container ls -a -q
 
 # step 4: pass the result from step3 as an argument to step4
 docker container rm -f $(docker container ls -a -q)
+
+# [important] to mapping a nginx server to host 80 port
+docker run -d -p 80:80 tjcchen/website:v1
 ```
 
 ## Links
