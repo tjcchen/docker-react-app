@@ -2,7 +2,7 @@
 A front-end application bootstrapped with Docker.
 
 ## Website
-Website is live at: http://35.172.190.158/
+website is bootstraped with Docker & AWS EC2: http://35.172.190.158/
 
 ## Dockerfile
 ```bash
